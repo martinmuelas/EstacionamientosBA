@@ -1,20 +1,22 @@
-require File.dirname(__FILE__) + '/Functions.rb'
+require File.dirname(__FILE__) + '/functions.rb'
 
 # Abre navegador y web
-# b = Abrir_Navegador(File.dirname(__FILE__))
-b = Abrir_Navegador()
+b = abrirNavegador()
+b.goto 'http://www.paginasamarillas.com.ar/b/estacionamiento-para-vehiculos/ciudad-de-buenos-aires/p-1/'
+
 puts "\nSe abrió el navegador!\n\n"
 
 adIndex = 0
 
-puts "*****************"
-puts "\nAnuncio Nro: " + adIndex.to_s
-puts "*****************"
 
 ##################################
 # BARRE LOS ANUNCIOS DE UNA PAGINA
 ##################################
 while b.element(:css, "li[data-id='ad#{adIndex.to_s}']").exists?
+
+	puts "*****************"
+	puts "\nAnuncio Nro: " + adIndex.to_s
+	puts "*****************"
 
 	# Selecciona y abre el primer item de la lista
 	b.element(:css, "li[data-id='ad#{adIndex.to_s}']").click
